@@ -1,0 +1,49 @@
+program test{
+
+	declare
+	i, j, k, l
+	enddeclare
+
+	function foo(in m, inout n){
+
+		declare
+		a
+		enddeclare
+
+		if(m > n){
+		    a := m + n;
+		    return(a)
+		}
+		else return(m)
+
+	}
+
+	procedure bar{
+
+		declare
+		a
+		enddeclare
+
+		a := 1024;
+		print(a)
+
+	}
+
+	i := 8;
+	j := 10 + 3 * (i - 6 / (2 * i));
+	k := foo(in i, inout j);
+	l := 0;
+	do{
+		i := i + 1;
+		if(i = 10) exit;
+		j := j + 1;
+                if(j = 10) exit;
+		l := l + foo(in i, inout j);
+		if(l >= 40 and l <= 60){
+			i := i + 2;
+			l := l + 1
+		}
+	}while(l <= 100 and not[l = 50]);
+	if(i > 0 and [[i < j / (3 - 1) or i > j] and k > 0 or l = 100 and not[foo(in i, inout j) > 10 + 3 * (i - 6)]]) print(l)
+
+}

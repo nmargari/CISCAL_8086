@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "intermediate_code.h"
 
@@ -70,8 +71,12 @@ void GenQuad(char *cmd, char *arg1, char *arg2, char *arg3){
 char *NewTemp(){
 
      static int temp_cntr = 1;
-     char t[9] = "T_", t_num[7];
-     
+     char t_num[7];
+     char *t;
+
+     t = (char *)malloc(sizeof(char) * 9);
+     strcpy(t, "T_");
+
      sprintf(t_num, "%d", temp_cntr++);
      strcat(t, t_num);
      return t;
